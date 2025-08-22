@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MASTER TMBV</title>
+
+  <!-- Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="bdk-logo.png" alt="BDK Logo" class="logo" />
+        <div>
+          <h1>MASTER TMBV</h1>
+          <!-- Removed subtitle -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls (Size first, then Class) -->
+    <div class="filters card">
+      <div class="field">
+        <label for="sizeDropdown">Size</label>
+        <select id="sizeDropdown" style="width: 260px;">
+          <option value=""></option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="classDropdown">Class</label>
+        <select id="classDropdown" style="width: 260px;">
+          <option value=""></option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button id="searchBtn" class="btn primary">Search</button>
+        <button id="clearBtn" class="btn ghost">Clear</button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="summary-grid">
+      <div class="kpi card">
+        <div class="kpi-label">Selected Size</div>
+        <div class="kpi-value" id="kpi-size">—</div>
+      </div>
+      <div class="kpi card">
+        <div class="kpi-label">Selected Class</div>
+        <div class="kpi-value" id="kpi-class">—</div>
+      </div>
+      <div class="kpi card">
+        <div class="kpi-label">Trim</div>
+        <div class="kpi-value" id="kpi-trim">—</div>
+      </div>
+      <div class="kpi card hidden" id="vt-card">
+        <div class="kpi-label">Valve Torque</div>
+        <div class="kpi-value" id="kpi-vt">—</div>
+      </div>
+      <div class="kpi card hidden" id="at-card">
+        <div class="kpi-label">Actuator Torque</div>
+        <div class="kpi-value" id="kpi-at">—</div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div class="table-header">
+        <h2>Material Capability Matrix <span style="font-weight: normal;">(MAST Values in Nm)</span></h2>
+        <div class="table-actions">
+          <button id="exportBtn" class="btn small">Export CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="data-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- libs -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
