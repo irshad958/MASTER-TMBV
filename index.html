@@ -17,25 +17,34 @@
         <img src="bdk-logo.png" alt="BDK Logo" class="logo" />
         <div>
           <h1>MASTER TMBV</h1>
-          <!-- Removed subtitle -->
         </div>
       </div>
     </header>
 
-    <!-- Controls (Size first, then Class) -->
+    <!-- Controls -->
     <div class="filters card">
       <div class="field">
         <label for="sizeDropdown">Size</label>
-        <select id="sizeDropdown" style="width: 260px;">
+        <select id="sizeDropdown" style="width: 200px;">
           <option value=""></option>
         </select>
       </div>
 
       <div class="field">
         <label for="classDropdown">Class</label>
-        <select id="classDropdown" style="width: 260px;">
+        <select id="classDropdown" style="width: 200px;">
           <option value=""></option>
         </select>
+      </div>
+
+      <div class="field">
+        <label for="input-vt">Valve Torque</label>
+        <input type="number" id="input-vt" class="torque-input" inputmode="decimal" placeholder="Enter value" />
+      </div>
+
+      <div class="field">
+        <label for="input-at">Actuator Torque</label>
+        <input type="number" id="input-at" class="torque-input" inputmode="decimal" placeholder="Enter value" />
       </div>
 
       <div class="buttons">
@@ -44,39 +53,32 @@
       </div>
     </div>
 
-    <!-- KPIs -->
-    <div class="summary-grid">
-      <div class="kpi card">
-        <div class="kpi-label">Selected Size</div>
-        <div class="kpi-value" id="kpi-size">—</div>
-      </div>
-      <div class="kpi card">
-        <div class="kpi-label">Selected Class</div>
-        <div class="kpi-value" id="kpi-class">—</div>
-      </div>
-      <div class="kpi card">
-        <div class="kpi-label">Trim</div>
-        <div class="kpi-value" id="kpi-trim">—</div>
-      </div>
-      <div class="kpi card hidden" id="vt-card">
-        <div class="kpi-label">Valve Torque</div>
-        <div class="kpi-value" id="kpi-vt">—</div>
-      </div>
-      <div class="kpi card hidden" id="at-card">
-        <div class="kpi-label">Actuator Torque</div>
-        <div class="kpi-value" id="kpi-at">—</div>
-      </div>
-    </div>
-
     <!-- Table -->
     <div class="card">
       <div class="table-header">
         <h2>Material Capability Matrix <span style="font-weight: normal;">(MAST Values in Nm)</span></h2>
         <div class="table-actions">
-          <button id="exportBtn" class="btn small">Export CSV</button>
+          <div class="export-dropdown">
+            <button id="exportMenuBtn" class="btn small">Export ▼</button>
+            <div id="exportMenu" class="dropdown-menu hidden">
+              <button id="exportXlsxBtn" class="dropdown-item">
+                <span class="export-icon">📊</span> Export XLSX
+              </button>
+              <button id="exportCsvBtn" class="dropdown-item">
+                <span class="export-icon">📋</span> Export CSV
+              </button>
+              <button id="exportPdfBtn" class="dropdown-item">
+                <span class="export-icon">📄</span> Export PDF
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="table-wrap">
+        <div id="loading" class="loading hidden">
+          <div class="spinner"></div> Loading…
+        </div>
+        <div id="empty" class="empty hidden">No data yet — choose Size and Class.</div>
         <table id="data-table">
           <thead></thead>
           <tbody></tbody>
@@ -89,6 +91,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
   <script src="script.js"></script>
 </body>
